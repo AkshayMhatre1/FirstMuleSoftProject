@@ -10,15 +10,17 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="first-mule-project-githubFlow" doc:id="5928b033-a48a-4c99-80d8-bc13ad74d320" >
 		<http:listener doc:name="Listener" doc:id="1802dbd6-dc3a-4741-a186-95774e4bcc00" config-ref="HTTP_Listener_config" path="/test"/>
+		<logger level="INFO" doc:name="Logger" doc:id="55a4a274-7cc1-4810-8e99-48318cb1325c" message='#["hiii"]'/>
 		<ee:transform doc:name="Transform Message" doc:id="a23d5589-2ef6-439a-883f-832ab96c8273" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
 {
-	"message" : "Github Practice"
+	"message" : "Github Practice jenkins"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="07497c58-4984-4f66-adc2-4dc263765a61" message="#[payload]"/>
 	</flow>
 </mule>
